@@ -8,12 +8,12 @@
         </div>
     </div>
 
-    @foreach($parent_categories as $parent)
+    @foreach($categories as $parent)
         <div class="mb-4">
             <h5>{{ $parent->name }}</h5>
-            @if($parent->subCategories->isNotEmpty())
+            @if($parent->children->isNotEmpty())
                 <ul class="list-group">
-                    @foreach($parent->subCategories as $category)
+                    @foreach($parent->children as $category)
                         <li class="list-group-item">
                             {{ $category->name }}
                         </li>

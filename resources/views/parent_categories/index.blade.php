@@ -24,7 +24,7 @@
         <tr>
           <td>{{ $key +1 }}</td>
           <td>{{ $category->name }}</td>
-          <td>{{ count($category->subCategories) }}</td>
+          <td>{{ count($category->children) }}</td>
           <td>{{ $category->created_at }}</td>
           <td>
             <a class="btn btn-primary" href="{{ url('parent_categories/edit?id=' . $category->id) }}">Edit</i></a>

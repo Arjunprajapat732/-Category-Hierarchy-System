@@ -24,8 +24,8 @@
         <tr>
           <td>{{ $key +1 }}</td>
           <td>
-            @if($category->parentCategory)
-                {{ $category->parentCategory->name }}
+            @if($category->parent)
+                {{ $category->parent->name }}
             @else
                 N/A
             @endif
