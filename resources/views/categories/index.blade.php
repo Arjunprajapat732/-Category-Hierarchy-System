@@ -22,7 +22,7 @@
     <tbody>
       @forelse($categories as $key => $category)
         <tr>
-          <td>{{ $key +1 }}</td>
+          <td>{{ $key + 1 }}</td>
           <td>
             @if($category->parent)
                 {{ $category->parent->name }}
@@ -36,8 +36,8 @@
             <a class="btn btn-primary" href="{{ url('categories/edit?id=' . $category->id) }}">Edit</i></a>
             <a class="btn btn-primary ml-2" href="#" 
             onclick="deleteCategory('{{ url('categories/delete') }}', '{{ $category->id }}', 'Are you sure you want to delete this category?', 'category'); return false;">
-             Delete
-          </a>
+              Delete
+            </a>
         </tr>
       @empty
         <tr>

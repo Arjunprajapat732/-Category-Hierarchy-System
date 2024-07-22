@@ -9,12 +9,8 @@
             <div class="form-group">
                 <label for="parent_category">Parent Category</label>
                 <select name="parent_id" id="parent_category" required class="form-control">
-                    <option value="">None</option>
-                    @foreach($parent_categories as $parent_category)
-                        <option value="{{ $parent_category->id }}" {{ $parent_category->id == $category->parent_id ? 'selected' : '' }}>
-                            {{ $parent_category->name }}
-                        </option>
-                    @endforeach
+                    <option value="0">None</option>
+                        {!! renderCategories($parent_categories) !!}
                 </select>
             </div>
             <br>
@@ -28,3 +24,9 @@
         </form>
     </div>
 @endsection
+<script>
+    select_value = '{{ $category->parent_id }}';
+    window.onload = function() {
+        document.getElementById('parent_category').value = select_value;
+    };
+</script>

@@ -20,14 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'parent_categories'], function () {
-    Route::get('/', [ParentCategoryController::class, 'index']);
-    Route::get('/add', [ParentCategoryController::class, 'add']);
-    Route::get('/edit', [ParentCategoryController::class, 'add']);
-    Route::get('/delete', [ParentCategoryController::class, 'delete']);
-    Route::Post('/store', [ParentCategoryController::class, 'store']);
-});
-
 Route::group(['prefix' => 'categories'], function () {
     Route::get('/tree', [CategoryController::class, 'tree']);
     

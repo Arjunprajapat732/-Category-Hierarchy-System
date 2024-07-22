@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::whereNotNull('parent_id')->get(); // Get only parent categories
+        $categories = Category::all(); // Get only parent categories
         return view('categories.index', compact('categories'));
     }
 
@@ -30,7 +30,7 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'parent_id' => 'nullable|exists:categories,id', // Ensure parent_id is valid if provided
+            'parent_id' => 'nullable', // Ensure parent_id is valid if provided
         ]);
 
         if ($validator->fails()) {
@@ -43,7 +43,7 @@ class CategoryController extends Controller
             $category = new Category();
         }
         $category->name = $request->name;
-        $category->parent_id = $request->parent_id; // Set parent_id
+        $category->parent_id = $request->parent_id == '0' ? null : $request->parent_id; // Set parent_id
         $category->save();
 
         return redirect('categories')->with('success', 'Category saved successfully!');
